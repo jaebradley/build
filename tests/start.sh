@@ -14,5 +14,7 @@ function verify_application_existence() {
 
 }
 
-verify_application_existence "Spotify.app"
-verify_application_existence "Rectangle.app"
+for application_name in "Spotify.app" "Rectangle.app"
+do
+  verify_application_existence "${application_name}"
+done
