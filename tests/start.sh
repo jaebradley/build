@@ -1,6 +1,18 @@
 #!/bin/bash
 
+. "$(dirname ${BASH_SOURCE})/../utilities/fail.sh"
+
 ls -la /Applications/
 
-if [[ ! -d "/Applications/Spotify.app" ]]; then echo "Spotify application does not exist" && exit 255; fi
-if [[ ! -x "/Applications/Spotify.app" ]]; then echo "Spotify application is not executable" && exit 255; fi
+function verify_application_existence() {
+  if [[ $# -ne 1 ]]; then fail "Expected one argument, the name of the application"; fi
+
+  local application_name="$1"
+
+  if [[ ! -d "/Applications/${application_name}" ]]; then fail "${application_name} does not exist"; fi
+  if [[ ! -x "/Applications/${application_name}" ]]; then fail "${application_name} is not executable"; fi
+
+}
+
+verify_application_existence "Spotify.app"
+verify_application_existence "Rectangle.app"
