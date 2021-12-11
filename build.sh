@@ -13,9 +13,5 @@ do
   disk_image_url="${disk_image_urls_by_application_name[$application_name]}"
   echo "Disk image url is ${disk_image_url} for ${application_name}"
   install_application_from_disk_image "${disk_image_url}" "${application_name}"
-done
-
-
   if [[ $? -ne 0 ]]; then fail "Failed to install Rectangle.app"; fi
-
-install_application_from_disk_image  if [[ $? -ne 0 ]]; then fail "Failed to install Spotify.app"; fi
+done
