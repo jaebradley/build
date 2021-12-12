@@ -7,7 +7,7 @@ function install_application_from_disk_image() {
   local application_name="$2"
 
   local application_path="/Applications/${application_name}"
-  if [[ -d "${application_path}" ]]; then echo "${application_name} is already installed" && exit 0; fi
+  if [[ -d "${application_path}" ]]; then echo "${application_name} is already installed" && return 0; fi
 
   local temporary_directory
 
@@ -39,6 +39,5 @@ function install_application_from_disk_image() {
   rm -rf "${temporary_directory}" || fail "Error on line ${LINENO}"
   rm -rf "${mount_directory_path}" || fail "Error on line ${LINENO}"
 
-  exit 0
+  return 0
 }
-
