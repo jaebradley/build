@@ -28,6 +28,7 @@ function install_application_from_disk_image() {
   hdiutil attach "${image_path}" -mountpoint "${mount_directory_path}" -readonly -nokernel -verify -noignorebadchecksums -noautoopen || fail "Failed to attach ${application_name} image"
 
   local expected_application_path="${mount_directory_path}/${application_name}"
+  ls -la "${expected_application_path}"
   if [[ ! -d "${expected_application_path}" ]]; then fail "Expected application ${expected_application_path} is not a directory"; fi
   if [[ ! -x "${expected_application_path}" ]]; then fail "Expected application ${expected_application_path} is not executable"; fi
 
