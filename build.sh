@@ -13,8 +13,8 @@ disk_image_urls=(
 application_names=(
   "Rectangle.app"
   "Spotify.app"
-  "Intellij IDEA CE"
-  "Pycharm CE"
+  "Intellij IDEA CE.app"
+  "Pycharm CE.app"
 )
 
 if [[ ${#disk_image_urls[@]} -ne ${#application_names[@]} ]]; then fail "Error on line ${LINENO}"; fi
