@@ -2,6 +2,7 @@
 
 . "$(dirname ${BASH_SOURCE})/utilities/fail.sh"
 . "$(dirname ${BASH_SOURCE})/utilities/applications/install_application_from_disk_image.sh"
+. "$(dirname ${BASH_SOURCE})/applications/vim/install.sh"
 
 disk_image_urls=(
   "https://github.com/rxhanson/Rectangle/releases/download/v0.49/Rectangle0.49.dmg"
