@@ -8,7 +8,7 @@ function install_plugin() {
   then
     echo "Plugin from repository $1 is already installed in directory named $2"
   else
-    git clone "$1" -C "$2" || fail "Unable to clone from repository with url: $1"
+    git clone "$1" "$2" || fail "Unable to clone from repository with url: $1"
   fi
 }
 
