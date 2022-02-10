@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. "$(dirname "${BASH_SOURCE}")/utilities/fail.sh"
+. "$(dirname ${BASH_SOURCE})/utilities/fail.sh"
 
 main() {
   if [[ "$#" != "1" ]]; then fail "Expected exactly one argument - the directory to install dependencies in"; fi
