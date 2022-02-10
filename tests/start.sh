@@ -14,7 +14,7 @@ function verify_application_existence() {
 
 }
 
-for application_name in "Spotify.app" "Rectangle.app" "Intellij IDEA CE.app" "Pycharm CE.app"
+for application_name in "Spotify.app" "Rectangle.app" "Intellij IDEA CE.app" "Pycharm CE.app" "Firefox.app" "Meld.app"
 do
   verify_application_existence "${application_name}"
 done
