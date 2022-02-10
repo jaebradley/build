@@ -8,5 +8,5 @@ function create_temporary_directory() {
 
   local path="/tmp/${id}"
   mkdir -p "${path}" || fail "Error on ${LINENO}"
-  (echo "${path}" && exit 0) || fail "Error on ${LINENO}"
+  echo -n "${path}" || fail "Error on ${LINENO}"
 }
