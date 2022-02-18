@@ -3,6 +3,8 @@
 . "$(dirname ${BASH_SOURCE})/utilities/fail.sh"
 . "$(dirname ${BASH_SOURCE})/utilities/applications/install_application_from_disk_image.sh"
 . "$(dirname ${BASH_SOURCE})/applications/vim/install.sh"
+. "$(dirname ${BASH_SOURCE})/applications/nvm/install.sh"
+. "$(dirname ${BASH_SOURCE})/applications/tldr/install.sh"
 
 disk_image_urls=(
   "https://github.com/rxhanson/Rectangle/releases/download/v0.49/Rectangle0.49.dmg"
@@ -30,3 +32,7 @@ for (( i=0; i < ${#disk_image_urls[@]}; i++ )); do
   install_application_from_disk_image "${disk_image_url}" "${application_name}"
   if [[ $? -ne 0 ]]; then fail "Failed to install ${application_name}"; fi
 done
+
+install_nvm || fail "Error on line ${LINENO}"
+nvm install v16.14.0
+install_tldr || fail "Error on line ${LINENO}"
