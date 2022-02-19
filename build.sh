@@ -52,7 +52,7 @@ for (( i=0; i < ${#application_directories[@]}; i++ )); do
     # if exit code != 0, install and then validate
     installation_path=$(cat "${application_directory}/installation_path")
 
-    . "${application_directory}/validate.sh" "${installation_path}"
+    $("${application_directory}/validate.sh" "${installation_path}")
     if [[ $? -ne 0 ]]
     then
       . "${application_directory}/install.sh" || fail "Failed on line ${LINENO}"
