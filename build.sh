@@ -55,8 +55,8 @@ for (( i=0; i < ${#application_directories[@]}; i++ )); do
     . "${application_directory}/validate.sh" "${installation_path}"
     if [[ $? -ne 0 ]]
     then
-      . "${application_directory}/install.sh"
-      . "${application_directory}/validate.sh" "${installation_path}"
+      . "${application_directory}/install.sh" || fail "Failed on line ${LINENO}"
+      . "${application_directory}/validate.sh" "${installation_path}" || fail "Failed on line ${LINENO}"
     fi
   done
 done
