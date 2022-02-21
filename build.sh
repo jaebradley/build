@@ -10,7 +10,7 @@ application_directories=(
   "$(dirname ${BASH_SOURCE})/applications/Intellij IDEA CE"
   "$(dirname ${BASH_SOURCE})/applications/Pycharm CE"
   "$(dirname ${BASH_SOURCE})/applications/Firefox"
-  "$(dirname ${BASH_SOURCE})/applications/Meld.app"
+  "$(dirname ${BASH_SOURCE})/applications/Meld"
 )
 
 required_application_files=(
