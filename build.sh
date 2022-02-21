@@ -1,16 +1,16 @@
 #!/bin/bash
 
-. "$(dirname ${BASH_SOURCE})/utilities/fail.sh"
-. "$(dirname ${BASH_SOURCE})/utilities/applications/install_application_from_disk_image.sh"
-. "$(dirname ${BASH_SOURCE})/applications/vim/install.sh"
+. "$(dirname "${BASH_SOURCE}")/utilities/fail.sh"
+. "$(dirname "${BASH_SOURCE}")/utilities/applications/install_application_from_disk_image.sh"
+. "$(dirname "${BASH_SOURCE}")/applications/vim/install.sh"
 
 application_directories=(
-  "$(dirname ${BASH_SOURCE})/applications/Rectangle"
-  "$(dirname ${BASH_SOURCE})/applications/Spotify"
-  "$(dirname ${BASH_SOURCE})/applications/Intellij IDEA CE"
-  "$(dirname ${BASH_SOURCE})/applications/Pycharm CE"
-  "$(dirname ${BASH_SOURCE})/applications/Firefox"
-  "$(dirname ${BASH_SOURCE})/applications/Meld"
+  "$(dirname "${BASH_SOURCE}")/applications/Rectangle"
+  "$(dirname "${BASH_SOURCE}")/applications/Spotify"
+  "$(dirname "${BASH_SOURCE}")/applications/Intellij IDEA CE"
+  "$(dirname "${BASH_SOURCE}")/applications/Pycharm CE"
+  "$(dirname "${BASH_SOURCE}")/applications/Firefox"
+  "$(dirname "${BASH_SOURCE}")/applications/Meld"
 )
 
 required_application_files=(
