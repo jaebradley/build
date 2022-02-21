@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. "$(dirname ${BASH_SOURCE})/../../utilities/fail.sh"
+. "$(dirname "${BASH_SOURCE}")/../../utilities/fail.sh"
 
 if [[ "$#" -ne 1 ]]; then fail "Expected exactly one argument, the installation path"; fi
 
