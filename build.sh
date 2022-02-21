@@ -4,18 +4,6 @@
 . "$(dirname ${BASH_SOURCE})/utilities/applications/install_application_from_disk_image.sh"
 . "$(dirname ${BASH_SOURCE})/applications/vim/install.sh"
 
-disk_image_urls=(
-  "https://download.jetbrains.com/python/pycharm-community-2021.3-aarch64.dmg?_gl=1*15mf13t*_ga*MTM3MDUzODQ0NS4xNjM5NjAwOTMy*_ga_V0XZL7QHEB*MTYzOTYwMDkzMi4xLjEuMTYzOTYwMDkzNi41Ng..&_ga=2.139141491.1583443186.1639600933-1370538445.1639600932"
-  "https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0/mac/en-US/Firefox%2096.0.dmg"
-  "https://github.com/yousseb/meld/releases/download/osx-18/meldmerge.dmg"
-)
-
-application_names=(
-  "Pycharm CE.app"
-  "Firefox.app"
-  "Meld.app"
-)
-
 if [[ ${#disk_image_urls[@]} -ne ${#application_names[@]} ]]; then fail "Error on line ${LINENO}"; fi
 
 for (( i=0; i < ${#disk_image_urls[@]}; i++ )); do
@@ -29,6 +17,9 @@ application_directories=(
   "$(dirname ${BASH_SOURCE})/applications/Rectangle"
   "$(dirname ${BASH_SOURCE})/applications/Spotify"
   "$(dirname ${BASH_SOURCE})/applications/Intellij IDEA CE"
+  "$(dirname ${BASH_SOURCE})/applications/Pycharm CE"
+  "$(dirname ${BASH_SOURCE})/applications/Firefox.app"
+  "$(dirname ${BASH_SOURCE})/applications/Meld.app"
 )
 
 required_application_files=(
