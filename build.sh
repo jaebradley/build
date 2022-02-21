@@ -4,21 +4,12 @@
 . "$(dirname ${BASH_SOURCE})/utilities/applications/install_application_from_disk_image.sh"
 . "$(dirname ${BASH_SOURCE})/applications/vim/install.sh"
 
-if [[ ${#disk_image_urls[@]} -ne ${#application_names[@]} ]]; then fail "Error on line ${LINENO}"; fi
-
-for (( i=0; i < ${#disk_image_urls[@]}; i++ )); do
-  disk_image_url=${disk_image_urls[i]}
-  application_name=${application_names[i]}
-  install_application_from_disk_image "${disk_image_url}" "${application_name}"
-  if [[ $? -ne 0 ]]; then fail "Failed to install ${application_name}"; fi
-done
-
 application_directories=(
   "$(dirname ${BASH_SOURCE})/applications/Rectangle"
   "$(dirname ${BASH_SOURCE})/applications/Spotify"
   "$(dirname ${BASH_SOURCE})/applications/Intellij IDEA CE"
   "$(dirname ${BASH_SOURCE})/applications/Pycharm CE"
-  "$(dirname ${BASH_SOURCE})/applications/Firefox.app"
+  "$(dirname ${BASH_SOURCE})/applications/Firefox"
   "$(dirname ${BASH_SOURCE})/applications/Meld.app"
 )
 
