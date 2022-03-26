@@ -8,7 +8,8 @@ location_path="$HOME/.bashrc"
 directory_path="$(dirname "${location_path}")"
 file_name="$(basename "${location_path}")"
 
-if [[ -f "${location_path}" ]];
+if [[ -f "${location_path}" ]]
+then
   chmod +x "${location_path}" || fail "Unable to add execute permissions on file ${location_path}"
 fi
 
