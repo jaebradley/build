@@ -16,6 +16,6 @@ jobs:
         with:
           ref: ${{ github.ref }}
       - name: Run build
-        run: bash ./build.sh
+        run: bash ./.github/scripts/build.sh
       - name: Run tests
         run: bash ./tests/start.sh

@@ -4,6 +4,23 @@
 . "$(dirname "${BASH_SOURCE}")/utilities/applications/install_application_from_disk_image.sh"
 . "$(dirname "${BASH_SOURCE}")/applications/vim/install.sh"
 
+function configure_file() {
+      configuration_file_directory="$1"
+      content_path="${configuration_file_directory}/content"
+      location_file_path="${configuration_file_directory}/location"
+      validation_path="${configuration_file_directory}/validate.sh"
+      configuration_path="${configuration_file_directory}/configure.sh"
+      $(bash "${validation_path}" "${content_path}" "${Location_file_path}")
+      if [[ $? -ne 0 ]]
+      then
+        . "${configuration_path}" "${content_path}" "${location_file_path}" || fail "Failed on line ${LINENO}"
+        . "${validation_path}" "${content_path}" "${location_file_path}" || fail "Failed on line ${LINENO}"
+        # TODO: process dependencies
+      fi
+}
+
+application_directory="$(dirname "${BASH_SOURCE}")"
+
 application_directories=(
   "$(dirname "${BASH_SOURCE}")/applications/Rectangle"
   "$(dirname "${BASH_SOURCE}")/applications/Spotify"
@@ -11,6 +28,7 @@ application_directories=(
   "$(dirname "${BASH_SOURCE}")/applications/Pycharm CE"
   "$(dirname "${BASH_SOURCE}")/applications/Firefox"
   "$(dirname "${BASH_SOURCE}")/applications/Meld"
+  "$(dirname "${BASH_SOURCE}")/applications/bash"
 )
 
 required_application_files=(
@@ -39,4 +57,16 @@ for (( i=0; i < ${#application_directories[@]}; i++ )); do
       . "${application_directory}/validate.sh" "${installation_path}" || fail "Failed on line ${LINENO}"
     fi
   done
+done
+
+
+for (( i=0; i < ${#application_directories[@]}; i++ )); do
+  application_directory=${application_directories[i]}
+  configuration_directory="${application_directory}/configuration"
+  if [[ -d "${configuration_directory}" ]];
+  then
+    while read -d '' filename; do
+      configure_file "${filename}" < /dev/null
+    done < <(find "${configuration_directory}" -maxdepth 1 -mindepth 1 -type d -print0)
+  fi
 done
