@@ -13,3 +13,5 @@ main() {
 
   bash bash-dependency-manager/install.sh "${installation_directory_path}"
 }
+
+main
