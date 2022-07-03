@@ -14,4 +14,4 @@ main() {
   bash bash-dependency-manager/install.sh "${installation_directory_path}"
 }
 
-main "$1"
+main "$(cd "$(dirname "$1")"; pwd)/$(basename "$1")"
