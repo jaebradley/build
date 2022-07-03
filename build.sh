@@ -11,7 +11,7 @@ main() {
 
   git clone https://github.com/jaebradley/bash-dependency-manager.git
 
-  bash bash-dependency-manager/install.sh "${installation_directory_path}"
+  . bash-dependency-manager/install.sh "${installation_directory_path}" || fail "Unable to install dependencies"
 }
 
 main "$(cd "$(dirname "$1")"; pwd)/$(basename "$1")"
