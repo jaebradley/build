@@ -7,6 +7,8 @@ main() {
 
   local installation_directory_path="$1"
 
+  echo "Installation directory path is ${installation_directory_path}"
+
   which git || fail "git is not installed"
 
   git clone https://github.com/jaebradley/bash-dependency-manager.git
