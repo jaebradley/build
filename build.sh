@@ -8,6 +8,7 @@ main() {
   local installation_directory_path="$1"
 
   echo "Installation directory path is ${installation_directory_path}"
+  echo $(ls -la)
 
   which git || fail "git is not installed"
 
