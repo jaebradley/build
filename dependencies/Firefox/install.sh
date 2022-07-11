@@ -11,3 +11,4 @@ install() {
   install_application_from_disk_image "${source}" "${name}"  || fail "Failed to install ${name}"
 }
 
+install "$@"
