@@ -5,7 +5,7 @@
 main() {
   if [[ "$#" != "1" ]]; then fail "Expected exactly one argument - the directory to install dependencies in"; fi
 
-  local installation_directory_path="$1"
+  local -r installation_directory_path="$1"
 
   echo "Installation directory path is ${installation_directory_path}"
   ls -la ${installation_directory_path}
