@@ -12,9 +12,10 @@ main() {
 
   which git || fail "git is not installed"
 
-  git clone https://github.com/jaebradley/bash-dependency-manager.git
+  git clone https://github.com/jaebradley/bash-dependency-manager.git || fail "Could not clone directory"
 
   . bash-dependency-manager/install.sh "${installation_directory_path}" || fail "Unable to install dependencies"
 }
 
+echo "fucking here: $(cd "$(dirname "$1")"; pwd)/$(basename "$1")"
 main "$(cd "$(dirname "$1")"; pwd)/$(basename "$1")"
