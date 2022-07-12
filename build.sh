@@ -15,7 +15,8 @@ main() {
   git clone https://github.com/jaebradley/bash-dependency-manager.git || fail "Could not clone directory"
 
   . bash-dependency-manager/install.sh "${installation_directory_path}" || fail "Unable to install dependencies"
+
+  ls -la "${installation_directory_path}" || fail "Unable to list contents of directory: ${installation_directory_path}"
 }
 
-echo "fucking here: $(cd "$(dirname "$1")"; pwd)/$(basename "$1")"
 main "$(cd "$(dirname "$1")"; pwd)/$(basename "$1")"
