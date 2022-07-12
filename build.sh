@@ -14,7 +14,8 @@ main() {
 
   git clone https://github.com/jaebradley/bash-dependency-manager.git || fail "Could not clone directory"
 
-  . bash-dependency-manager/install.sh "${installation_directory_path}" || fail "Unable to install dependencies"
+  . bash-dependency-manager/install.sh "${installation_directory_path}"
+  if [[ "0" != "$?" ]]; then fail "Unable to install dependencies"; fi
 
   ls -la "${installation_directory_path}" || fail "Unable to list contents of directory: ${installation_directory_path}"
 }
