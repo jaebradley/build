@@ -1,6 +1,8 @@
 #!/bin/bash
 
-. "$(dirname ${BASH_SOURCE})/../fail.sh"
+directory_name="$(dirname "${BASH_SOURCE}")"
+
+. "${directory_name}/../fail.sh"
 
 function install_application_from_disk_image() {
   if [[ $# -ne 2 ]]; then fail "Expected two arguments, the disk image URL and the name of the application"; fi
