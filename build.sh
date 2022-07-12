@@ -20,4 +20,4 @@ main() {
   ls -la "${installation_directory_path}" || fail "Unable to list contents of directory: ${installation_directory_path}"
 }
 
-main "$(cd "$(dirname "$1")"; pwd)/$(basename "$1")"
+main $(pwd)
