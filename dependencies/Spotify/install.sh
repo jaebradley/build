@@ -12,4 +12,5 @@ install() {
   install_application_from_disk_image "${source}" "${name}"  || fail "Failed to install ${name}"
 }
 
+echo "fucking installing Spotify"
 install "$@"
