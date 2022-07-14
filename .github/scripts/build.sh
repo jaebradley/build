@@ -1,13 +1,24 @@
 #!/bin/bash
 
-. "$(dirname "${BASH_SOURCE}")/../../utilities/fail.sh"
+directory_path="$(dirname "${BASH_SOURCE}")"
+if [[ "0" != "$?" ]]; then echo "Could not calculate directory path for ${BASH_SOURCE}" && exit 255; fi
 
-chmod +x "$HOME/.bashrc" || fail "Could not make bashrc file executable"
-rm -f "$HOME/.bashrc" || fail "Could not delete bashrc file"
+. "${directory_path}/../../utilities/fail.sh"
+if [[ "0" != "$?" ]]; then echo "Could not import utility on ${LINENO}" && exit 255; fi
 
-script_path="$(dirname "${BASH_SOURCE}")/../../build.sh"
-dependencies_directory_path="$(dirname "${BASH_SOURCE}")/../../"
+main() {
+  # Github workflows already have a .bashrc file
+  local -r bashrc_path="$HOME/.bashrc"
 
-. "${script_path}" "${dependencies_directory_path}"  || fail "Unable to execute build script: ${script_path} on dependencies directory: ${dependencies_directory_path}"
-if [[ "0" != "$?" ]]; then fail "Unable to execute build script: ${script_path} on dependencies directory: ${dependencies_directory_path}"; fi
+  chmod +x "${bashrc_path}" || fail "Could not make bashrc file executable"
+  rm -f "${bashrc_path}" || fail "Could not delete bashrc file"
+
+  local -r script_path="${directory_path}/../../build.sh"
+  local -r dependencies_directory_path="${directory_path}/../../"
+
+  . "${script_path}" "${dependencies_directory_path}"
+  if [[ "0" != "$?" ]]; then fail "Unable to execute build script: ${script_path} on dependencies directory: ${dependencies_directory_path}"; fi
+}
+
+main
 
