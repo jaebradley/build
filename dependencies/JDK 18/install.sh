@@ -24,16 +24,18 @@ install() {
 
   hdiutil verify "${image_path}" || fail "${application_name} image failed verification"
 
-  local mount_directory_path
-  hash_of_hashed_disk_image_url=$(md5 -q -s "${hashed_disk_image_url}")  mount_directory_path="/tmp/${hash_of_hashed_disk_image_url}"
+  local hash_of_hashed_disk_image_url
+  hash_of_hashed_disk_image_url=$(md5 -q -s "${hashed_disk_image_url}")  
   if [[ "0" != "$?" ]]; then fail "Error on line ${LINENO}"; fi
+
+  local -r mount_directory_path="/tmp/${hash_of_hashed_disk_image_url}"
 
   mkdir -p "${mount_directory_path}" || fail "Error on line ${LINENO}"
   hdiutil attach "${image_path}" -mountpoint "${mount_directory_path}" -readonly -nokernel -verify -noignorebadchecksums -noautoopen || fail "Failed to attach ${source} image"
 
   ls -la "${mount_directory_path}"
 
-  local expected_application_path="${mount_directory_path}/jdk-18.0.1.1.jdk"
+  local -r expected_application_path="${mount_directory_path}/jdk-18.0.1.1.jdk"
   if [[ ! -d "${expected_application_path}" ]]; then fail "Expected application ${expected_application_path} is not a directory"; fi
   if [[ ! -x "${expected_application_path}" ]]; then fail "Expected application ${expected_application_path} is not executable"; fi
 
