@@ -20,7 +20,7 @@ install() {
   local -r temporary_directory="/tmp/${hashed_disk_image_url}"
   mkdir -p "${temporary_directory}" || fail "Error on line ${LINENO}"
   local -r image_path="${temporary_directory}/_"
-  curl -L "${disk_image_url}" --output "${image_path}" || fail "Error on line ${LINENO}"
+  curl -L "${source}" --output "${image_path}" || fail "Error on line ${LINENO}"
 
   hdiutil verify "${image_path}" || fail "${application_name} image failed verification"
 
