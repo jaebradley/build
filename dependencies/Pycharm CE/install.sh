@@ -1,7 +1,7 @@
 #!/bin/bash
 
-directory_path="$(dirname "${bash_source}")"
-if [[ "0" != "$?" ]]; then echo "could not calculate directory path for ${bash_source}" && exit 255; fi
+directory_path="$(dirname "${BASH_SOURCE}")"
+if [[ "0" != "$?" ]]; then echo "could not calculate directory path for ${BASH_SOURCE}" && exit 255; fi
 
 . "${directory_path}/../../utilities/fail.sh"
 if [[ "0" != "$?" ]]; then echo "could not import utility on ${lineno}" && exit 255; fi
