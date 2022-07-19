@@ -17,7 +17,7 @@ install() {
   hashed_disk_image_url=$(md5 -q -s "${source}")
   if [[ "0" != "$?" ]]; then fail "Error on line ${LINENO}"; fi
 
-  local -r temporary_directory="/tmp/${hashed_disk_image_url}"
+  local -r temporary_directory="~/${hashed_disk_image_url}"
   mkdir -p "${temporary_directory}" || fail "Error on line ${LINENO}"
   local -r image_path="${temporary_directory}/_"
   curl -L "${source}" --output "${image_path}" || fail "Error on line ${LINENO}"
@@ -35,6 +35,8 @@ install() {
 
   local -r expected_pkg_path="${mount_directory_path}/JDK 18.0.1.1.pkg"
   if [[ ! -f "${expected_pkg_path}" ]]; then fail "Expected package ${expected_pkg_path} does not exist"; fi
+
+  ls -la "${mount_directory_path}" || fail "Error on line ${LINENO}"
 
   chmod 500 "${expected_pkg_path}" || fail "Error on line ${LINENO}"
   if [[ ! -x "${expected_pkg_path}" ]]; then fail "Expected package ${expected_pkg_path} is not executable"; fi
