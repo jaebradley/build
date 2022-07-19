@@ -35,6 +35,8 @@ install() {
 
   local -r expected_pkg_path="${mount_directory_path}/JDK 18.0.1.1.pkg"
   if [[ ! -f "${expected_pkg_path}" ]]; then fail "Expected package ${expected_pkg_path} does not exist"; fi
+
+  chmod 500 "${expected_pkg_path}" || fail "Error on line ${LINENO}"
   if [[ ! -x "${expected_pkg_path}" ]]; then fail "Expected package ${expected_pkg_path} is not executable"; fi
 
   installer -store -pkg "${expected_pkg_path}" -target "/Library/Java/JavaVirtualMachines/jdk-18.0.1.1.jdk" || fail "Error on line ${LINENO}"
