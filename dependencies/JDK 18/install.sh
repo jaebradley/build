@@ -19,6 +19,8 @@ install() {
 
   local -r temporary_directory="/tmp/${hashed_disk_image_url}"
   mkdir -p "${temporary_directory}" || fail "Error on line ${LINENO}"
+  chmod 777 "${temporary_directory}" || fail "Error on line ${LINENO}"
+
   local -r image_path="${temporary_directory}/_"
   curl -L "${source}" --output "${image_path}" || fail "Error on line ${LINENO}"
 
@@ -30,6 +32,8 @@ install() {
 
   local -r mount_directory_path="${temporary_directory}/${hash_of_hashed_disk_image_url}"
   mkdir -p "${mount_directory_path}" || fail "Error on line ${LINENO}"
+  chmod 777 "${mount_directory_path}" || fail "Error on line ${LINENO}"
+
   hdiutil attach "${image_path}" -mountpoint "${mount_directory_path}" -readonly -nokernel -verify -noignorebadchecksums -noautoopen || fail "Failed to attach ${source} image"
 
   local -r expected_pkg_path="${mount_directory_path}/JDK 18.0.1.1.pkg"
