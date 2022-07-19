@@ -10,7 +10,6 @@ install() {
   if [[ "3" != "$#" ]]; then fail "Expected three arguments: a source binary URL, a target destination, and the dependency path"; fi
 
   local -r source="$1"
-  if [[ "${source}" != "https://download.oracle.com/java/18/archive/jdk-18.0.1.1_macos-aarch64_bin.dmg" ]]; then fail "Unexpected source: ${source}"; fi
   local -r jdk_path="/Library/Java/JavaVirtualMachines/jdk-18.0.1.1.jdk"
   if [[ -d "${jdk_path}" ]]; then fail "${jdk_path} is already installed"; fi
 
@@ -34,9 +33,7 @@ install() {
   mkdir -p "${mount_directory_path}" || fail "Error on line ${LINENO}"
   hdiutil attach "${image_path}" -mountpoint "${mount_directory_path}" -readonly -nokernel -verify -noignorebadchecksums -noautoopen || fail "Failed to attach ${source} image"
 
-  ls -la "${mount_directory_path}"
-
-  local -r expected_application_path="${mount_directory_path}/jdk-18.0.1.1.jdk"
+  local -r expected_application_path="${mount_directory_path}/JDK 18.0.1.1.pkg"
   if [[ ! -d "${expected_application_path}" ]]; then fail "Expected application ${expected_application_path} is not a directory"; fi
   if [[ ! -x "${expected_application_path}" ]]; then fail "Expected application ${expected_application_path} is not executable"; fi
 
