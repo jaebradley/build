@@ -33,16 +33,10 @@ install() {
   mkdir -p "${mount_directory_path}" || fail "Error on line ${LINENO}"
   hdiutil attach "${image_path}" -mountpoint "${mount_directory_path}" -readonly -nokernel -verify -noignorebadchecksums -noautoopen || fail "Failed to attach ${source} image"
 
-  printf "Mount directory contents"
-  ls -la "${mount_directory_path}"
+  local -r expected_pkg_path="${mount_directory_path}/JDK 18.0.1.1.pkg"
+  if [[ ! -x "${expected_pkg_path}" ]]; then fail "Expected package ${expected_pkg_path} is not executable"; fi
 
-  local -r expected_application_path="${mount_directory_path}/JDK 18.0.1.1.pkg"
-  if [[ ! -d "${expected_application_path}" ]]; then fail "Expected application ${expected_application_path} is not a directory"; fi
-  if [[ ! -x "${expected_application_path}" ]]; then fail "Expected application ${expected_application_path} is not executable"; fi
-
-  cp -R "${expected_application_path}" "/Library/Java/JavaVirtualMachines/jdk-18.0.1.1.jdk" || fail "Error on line ${LINENO}"
-  chmod 711 "${application_path}" || fail "Error on line ${LINENO}"
-
+  installer -store -pkg "${expected_pkg_path}" -target "/Library/Java/JavaVirtualMachines/jdk-18.0.1.1.jdk" || fail "Error on line ${LINENO}"
   hdiutil detach "/private${mount_directory_path}" || fail "Error on line ${LINENO}"
 
   rm -rf "${temporary_directory}" || fail "Error on line ${LINENO}"
