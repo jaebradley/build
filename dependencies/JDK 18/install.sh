@@ -10,6 +10,7 @@ install() {
   if [[ "3" != "$#" ]]; then fail "Expected three arguments: a source binary URL, a target destination, and the dependency path"; fi
 
   local -r source="$1"
+  if [[ "${source}" != "https://download.oracle.com/java/18/archive/jdk-18.0.1.1_macos-aarch64_bin.dmg" ]]; then fail "Unexpected source: ${source}"; fi
   local -r jdk_path="/Library/Java/JavaVirtualMachines/jdk-18.0.1.1.jdk"
   if [[ -d "${jdk_path}" ]]; then fail "${jdk_path} is already installed"; fi
 
