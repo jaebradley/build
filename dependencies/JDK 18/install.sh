@@ -17,7 +17,7 @@ install() {
   hashed_disk_image_url=$(md5 -q -s "${source}")
   if [[ "0" != "$?" ]]; then fail "Error on line ${LINENO}"; fi
 
-  local -r temporary_directory="~/${hashed_disk_image_url}"
+  local -r temporary_directory="/tmp/${hashed_disk_image_url}"
   mkdir -p "${temporary_directory}" || fail "Error on line ${LINENO}"
   local -r image_path="${temporary_directory}/_"
   curl -L "${source}" --output "${image_path}" || fail "Error on line ${LINENO}"
@@ -28,8 +28,7 @@ install() {
   hash_of_hashed_disk_image_url=$(md5 -q -s "${hashed_disk_image_url}")  
   if [[ "0" != "$?" ]]; then fail "Error on line ${LINENO}"; fi
 
-  local -r mount_directory_path="/tmp/${hash_of_hashed_disk_image_url}"
-
+  local -r mount_directory_path="${temporary_directory}/${hash_of_hashed_disk_image_url}"
   mkdir -p "${mount_directory_path}" || fail "Error on line ${LINENO}"
   hdiutil attach "${image_path}" -mountpoint "${mount_directory_path}" -readonly -nokernel -verify -noignorebadchecksums -noautoopen || fail "Failed to attach ${source} image"
 
