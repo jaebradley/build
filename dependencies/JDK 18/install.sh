@@ -19,7 +19,7 @@ install() {
 
   local -r temporary_directory="/tmp/${hashed_disk_image_url}"
   mkdir -p "${temporary_directory}" || fail "Error on line ${LINENO}"
-  chmod 777 "${temporary_directory}" || fail "Error on line ${LINENO}"
+  chmod -R 777 "${temporary_directory}" || fail "Error on line ${LINENO}"
 
   local -r image_path="${temporary_directory}/_"
   curl -L "${source}" --output "${image_path}" || fail "Error on line ${LINENO}"
@@ -32,7 +32,7 @@ install() {
 
   local -r mount_directory_path="${temporary_directory}/${hash_of_hashed_disk_image_url}"
   mkdir -p "${mount_directory_path}" || fail "Error on line ${LINENO}"
-  chmod 777 "${mount_directory_path}" || fail "Error on line ${LINENO}"
+  chmod -R 777 "${mount_directory_path}" || fail "Error on line ${LINENO}"
 
   hdiutil attach "${image_path}" -mountpoint "${mount_directory_path}" -readonly -nokernel -verify -noignorebadchecksums -noautoopen || fail "Failed to attach ${source} image"
 
@@ -41,7 +41,7 @@ install() {
 
   ls -la "${mount_directory_path}" || fail "Error on line ${LINENO}"
 
-  chmod 777 "${expected_pkg_path}" || fail "Error on line ${LINENO}"
+  chmod -R 777 "${expected_pkg_path}" || fail "Error on line ${LINENO}"
   if [[ ! -x "${expected_pkg_path}" ]]; then fail "Expected package ${expected_pkg_path} is not executable"; fi
 
   installer -store -pkg "${expected_pkg_path}" -target "/Library/Java/JavaVirtualMachines/jdk-18.0.1.1.jdk" || fail "Error on line ${LINENO}"
