@@ -22,6 +22,9 @@ main() {
   local go_existence_check_output
   go_existence_check_output="$(type -p "go")"
 
+  local rust_existence_check_output
+  rust_existence_check_output="$(type -p "rustc")"
+
   if [[ "0" != "$?" ]]; then fail "Error on ${LINENO}"; fi
   if [[ "go is /usr/local/go/bin " != "${go_existence_check_output}" ]]; then fail "Error on ${LINENO}"; fi
 }
