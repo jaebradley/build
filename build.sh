@@ -9,7 +9,7 @@ main() {
 
   which git || fail "git is not installed"
 
-  git clone https://github.com/jaebradley/bash-dependency-manager.git || fail "Could not clone directory"
+  git clone --quiet https://github.com/jaebradley/bash-dependency-manager.git || fail "Could not clone directory"
 
   . bash-dependency-manager/install.sh "${installation_directory_path}"
   if [[ "0" != "$?" ]]; then fail "Unable to install dependencies"; fi
