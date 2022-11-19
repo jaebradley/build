@@ -1,1 +1,4 @@
 *.swp
+
+# Ignore the cache directory
+dependencies/.cache/*
