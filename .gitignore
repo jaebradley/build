@@ -2,3 +2,6 @@
 
 # Ignore the cache directory
 dependencies/.cache/*
+
+# Ignore bash-dependency-manager dependency
+bash-dependency-manager/*
