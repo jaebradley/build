@@ -19,3 +19,5 @@ main() {
   if [[ "0" != "$?" ]]; then fail "Error on ${LINENO}"; fi
   if [[ "go is /usr/local/go/bin " != "${go_existence_check_output}" ]]; then fail "Error on ${LINENO}"; fi
 }
+
+main
