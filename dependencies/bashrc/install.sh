@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. "$(dirname "${BASH_SOURCE}")/../../../../utilities/fail.sh"
+. "$(dirname "${BASH_SOURCE}")/../../utilities/fail.sh"
 
 function main() {
   local content_path="$1"
