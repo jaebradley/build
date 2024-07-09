@@ -1,6 +1,6 @@
 #!/bin/env bash
 
-. "$(dirname ${BASH_SOURCE})/../../../utilities/fail.sh"
+. "$(dirname ${BASH_SOURCE})/../../utilities/fail.sh"
 
 function verify_application_existence() {
   if [[ $# -ne 1 ]]; then fail "Expected one argument, the name of the application"; fi
