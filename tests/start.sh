@@ -13,7 +13,7 @@ main() {
   export PATH=$PATH:/usr/local/go/bin
   local go_existence_check_output
   go_existence_check_output="$(type -p "go")"
-  if [[ "go is /usr/local/go/bin " != "${go_existence_check_output}" ]]; then fail "Error on line ${LINENO}"; fi
+  if [[ "0" != "$?" ]]; then fail "Error on line ${LINENO}"; fi
 
   export PATH=$PATH:~/.cargo/bin
   local rust_existence_check_output
