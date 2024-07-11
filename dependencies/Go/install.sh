@@ -20,11 +20,11 @@ install() {
   mkdir -p "${temporary_directory}" || fail "Error on line ${LINENO}"
   chmod -R 777 "${temporary_directory}" || fail "Error on line ${LINENO}"
 
-  local -r pkg_path="${temporary_directory}/_"
+  local -r pkg_path="${temporary_directory}/${hashed_disk_image_url}.pkg"
   curl -L "${source}" --output "${pkg_path}" || fail "Error on line ${LINENO}"
 
   ls -la "${temporary_directory}" || fail "Error on line ${LINENO}"
-  installer -store -pkg "${pkg_path}" -target "${target}" || fail "Error on line ${LINENO}"
+  sudo installer -package "${pkg_path}" -target "${target}" || fail "Error on line ${LINENO}"
 
   rm -rf "${temporary_directory}" || fail "Error on line ${LINENO}"
 }
