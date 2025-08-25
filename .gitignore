@@ -5,3 +5,9 @@ dependencies/.cache/*
 
 # Ignore bash-dependency-manager dependency
 bash-dependency-manager/*
+
+# Ignore IDE
+.idea/*
+
+# Ignore Apple files
+.DS_Store
