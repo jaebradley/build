@@ -20,6 +20,10 @@ main() {
   rust_existence_check_output="$(type -p "rustc")"
   if [[ "0" != "$?" ]]; then fail "Error on line ${LINENO}"; fi
 
+  local -r nerdtree_plugin_location="~/.vim/pack/vendor/start/nerdtree"
+  if [[ ! -e "${nerdtree_plugin_location}" ]]; then fail "${nerdtree_plugin_location} does not exist"; fi
+  if [[ ! -r "${nerdtree_plugin_location}" ]]; then fail "${nerdtree_plugin_location} is not readable"; fi
+  if [[ ! -w "${nerdtree_plugin_location}" ]]; then fail "${nerdtree_plugin_location} is not writable"; fi
 }
 
 main
