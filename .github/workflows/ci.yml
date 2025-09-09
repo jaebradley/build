@@ -19,3 +19,5 @@ jobs:
         run: bash ./.github/scripts/build.sh
       - name: Run tests
         run: bash ./tests/start.sh
+      - name: Run vimrc tests
+        run: bash ./tests/dependencies/vimrc/test.sh
