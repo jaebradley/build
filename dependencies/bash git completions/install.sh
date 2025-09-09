@@ -1,4 +1,4 @@
-#!/bin/bash/
+#!/bin/bash
 
 . "$(dirname "${BASH_SOURCE}")/../../utilities/fail.sh"
 
