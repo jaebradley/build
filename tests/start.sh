@@ -25,9 +25,12 @@ main() {
   if [[ ! -r "${nerdtree_plugin_location}" ]]; then fail "${nerdtree_plugin_location} is not readable"; fi
   if [[ ! -w "${nerdtree_plugin_location}" ]]; then fail "${nerdtree_plugin_location} is not writable"; fi
 
-  local -r jq_file_path="/usr/bin/jq"
+  local -r jq_file_path="/usr/local/bin/jq"
   if [[ ! -e "${jq_file_path}" ]]; then fail "${jq_file_path} does not exist"; fi
   if [[ ! -x "${jq_file_path}" ]]; then fail "${jq_file_path} is not executable"; fi
+
+  command -v "jq"
+  if [[ "0" != "$?" ]]; then fail "Error on line ${LINENO}"; fi
 }
 
 main
