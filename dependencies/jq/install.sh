@@ -13,7 +13,7 @@ install() {
   local -r target_file_path="$2"
 
   curl -L "${source}" --output "${target_file_path}" || fail "Error on line ${LINENO}"
-  if [[ "0" != "$?" ]]; then fail "Failed to install jq"; fi
+  chmod 111 "${target_file_path}" || fail "Error on line ${LINENO}"
 }
 
 install "$@"

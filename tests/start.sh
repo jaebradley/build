@@ -29,8 +29,7 @@ main() {
   if [[ ! -e "${jq_file_path}" ]]; then fail "${jq_file_path} does not exist"; fi
   if [[ ! -x "${jq_file_path}" ]]; then fail "${jq_file_path} is not executable"; fi
 
-  command -v "jq"
-  if [[ "0" != "$?" ]]; then fail "Error on line ${LINENO}"; fi
+  type -p "jq" || fail "Error on line ${LINENO}"
 }
 
 main
