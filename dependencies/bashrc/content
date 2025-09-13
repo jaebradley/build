@@ -2,5 +2,6 @@
 
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:~/.cargo/bin
+export PATH=$PATH:/usr/local/bin/jq
 
 source $HOME/.bash/git-prompt.sh
