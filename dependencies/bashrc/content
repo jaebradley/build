@@ -5,3 +5,7 @@ export PATH=$PATH:~/.cargo/bin
 export PATH=$PATH:/usr/local/bin/jq
 
 source $HOME/.bash/git-prompt.sh
+
+alias tup="tr '[:lower:]' '[:upper:]'"
+alias tlow="tr '[:upper:]' '[:lower:]'"
+alias today='echo -n "$(date '+%Y-%m-%d')"'
