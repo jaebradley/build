@@ -1,0 +1,3 @@
+#!/bin/bash
+
+source $HOME/.bash/git-prompt.sh
